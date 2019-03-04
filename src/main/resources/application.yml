@@ -1,0 +1,102 @@
+########################################################
+##tomcat server配置
+########################################################
+server:
+  port: 8080
+  tomcat: 
+    uri-encoding: UTF-8
+  
+########################################################
+##datasource 默认数据源配置
+########################################################
+spring:
+  application: 
+    name: demo-boot
+  # 数据库 and dbcp 连接池
+  datasource:
+    url: jdbc:mysql://182.254.131.140:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: wangmeng
+    password: Ywc201405
+    driver-class-name: com.mysql.cj.jdbc.Driver #mysql官方驱动修改 驱动包类、rul用法修改、注意url中时区的问题
+#    type: org.apache.commons.dbcp2.BasicDataSource
+#    dbcp2:
+#      username: wangmeng
+#      password: Ywc201405
+#      driver-class-name: com.mysql.jdbc.Driver
+#      initial-size: 4
+#      min-idle: 4
+#      max-total: 20
+#      max-idle: 20
+#      max-wait-millis: 10000
+#      validation-query: SELECT x
+#  rabbitmq:
+#    host: 10.211.55.15
+#    port: 5672
+#    username: admin
+#    password: admin
+  redis:
+    database: 0
+    host: 112.124.110.193
+    password: wm_dev
+    port: 6377
+    timeout: 3000
+    lettuce:
+      pool:
+        max-active: 10
+        min-idle: 1
+        max-idle: 1000
+        max-wait: -1
+
+#########################################################
+###mybatis  不需要配置项、不需要mapper.xml文件，本工程将使用纯注解的形式完成sql的操作。
+#########################################################
+mybatis:
+#  type-aliases-package: com.demo.springboot.domain
+  mapper-locations: classpath:mappers/*.xml
+
+#########################################################
+####REDIS (RedisProperties) redis基本配置；
+#########################################################
+#  
+#
+###freemarker 配置
+##  freemarker:
+##    allow-request-override: false
+##    cache: true
+##    check-template-location: false
+##    charset: UTF-8
+##    content-type: text/html; charset=utf-8
+##    expose-request-attributes: false
+##    expose-session-attributes: false
+##    expose-spring-macro-helpers: false
+###    prefix: /fm
+##    suffix: .ftl
+##    template-loader-path:
+##    - classpath:/template
+#
+### thymeleaf 配置
+##  thymeleaf:
+##    cache: false
+##    mode: LEGACYHTML5
+
+## 自定义 properties 
+## 三种写法：
+## 1.SystemParams类的@Component@ConfigurationProperties(prefix="customing.params")
+## 2.AppConfigure类
+## 3.在类的属性上使用  @Value("${customing.params.userName}")
+customing:
+  params: 
+    userName: Alex
+    bookTitle: Spring Boot入门
+    mapProps: 
+      key1: value1 
+      key2: value2
+    listProp2:  
+    - config2Value1  
+    - config2Vavlue2  
+    listProp1:  
+    - name: abc  
+      value: abcValue  
+    - name: efg  
+      value: efgValue  
+      
