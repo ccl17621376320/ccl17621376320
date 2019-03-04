@@ -124,11 +124,7 @@ public class DemoController {
 		return String.valueOf(number);
 	}
 
-	@RequestMapping("/getDemoRe")
-	public DemoRepository getDemoRe(Long id) {
-		return demoService.selectDemoRepositoryByPrimaryKey(id);
-	}
-	
+
 	@RequestMapping("/getDemo")
 	public Demo getDemo(Long id) {
 		return demoService.getDemoById(id);

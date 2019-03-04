@@ -51,8 +51,8 @@ spring:
 ###mybatis  不需要配置项、不需要mapper.xml文件，本工程将使用纯注解的形式完成sql的操作。
 #########################################################
 mybatis:
-#  type-aliases-package: com.demo.springboot.domain
-  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.demo.springboot.domain
+  mapper-locations: classpath:/mappers/*.xml
 
 #########################################################
 ####REDIS (RedisProperties) redis基本配置；

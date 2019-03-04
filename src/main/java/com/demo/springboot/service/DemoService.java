@@ -13,6 +13,4 @@ public interface DemoService {
 	void removeDemo(Demo demo);
 	
 	void insertDemo(Demo demo);
-	
-	DemoRepository selectDemoRepositoryByPrimaryKey(Long id);
 }
