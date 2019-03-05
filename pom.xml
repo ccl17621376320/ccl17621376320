@@ -149,6 +149,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<!-- 热部署 devtools 启动 -->
 				<configuration>
+					<mainClass>com.demo.springboot.Application</mainClass>
 					<jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
 					<fork>true</fork>
 				</configuration>
