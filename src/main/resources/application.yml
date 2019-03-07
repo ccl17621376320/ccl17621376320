@@ -18,17 +18,20 @@ spring:
     username: wangmeng
     password: Ywc201405
     driver-class-name: com.mysql.cj.jdbc.Driver #mysql官方驱动修改 驱动包类、rul用法修改、注意url中时区的问题
-#    type: org.apache.commons.dbcp2.BasicDataSource
-#    dbcp2:
-#      username: wangmeng
-#      password: Ywc201405
-#      driver-class-name: com.mysql.jdbc.Driver
-#      initial-size: 4
-#      min-idle: 4
-#      max-total: 20
-#      max-idle: 20
-#      max-wait-millis: 10000
-#      validation-query: SELECT x
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+      test-on-return: true
+      test-on-borrow: true
+      test-while-idle: true
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      pool-prepared-statements: true
+      max-pool-prepared-statement: 20
+
 #  rabbitmq:
 #    host: 10.211.55.15
 #    port: 5672

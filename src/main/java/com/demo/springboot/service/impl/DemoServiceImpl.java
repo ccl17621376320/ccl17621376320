@@ -1,6 +1,7 @@
 package com.demo.springboot.service.impl;
 
 
+import com.demo.springboot.domain.repository.DemoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.demo.springboot.domain.Demo;
@@ -11,7 +12,7 @@ import com.demo.springboot.service.DemoService;
 @Service(DemoServiceImpl.SERVICE_NAME)
 public class DemoServiceImpl implements DemoService {
 	public static final String SERVICE_NAME = "demoService";
-	
+
 	@Autowired
 	private DemoMapper demoMapper;
 
@@ -33,5 +34,10 @@ public class DemoServiceImpl implements DemoService {
 	@Override
 	public void insertDemo(Demo demo) {
 		demoMapper.insertSelective(demo);
+	}
+
+	@Override
+	public DemoRepository getDemoRepositoryById(Long demoId) {
+		return demoMapper.selectDemoRepositoryByPrimaryKey(demoId);
 	}
 }

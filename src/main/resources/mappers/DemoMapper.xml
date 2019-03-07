@@ -6,6 +6,16 @@
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="info" property="info" jdbcType="VARCHAR" />
   </resultMap>
+
+  <resultMap id="DemoRepositoryResultMap" type="com.demo.springboot.domain.repository.DemoRepository" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="info" property="info" jdbcType="VARCHAR" />
+    <result column="info" property="info" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     id, name, info
   </sql>
@@ -68,4 +78,10 @@
       info = #{info,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+
+  <select id="selectDemoRepositoryByPrimaryKey" resultMap="DemoRepositoryResultMap" parameterType="java.lang.Long" >
+    SELECT demo.id,demo.name,demo.info,user.username,user.email email FROM test.test_demo demo, master_data.md_user user
+    where user.id = demo.id and demo.id =  #{id,jdbcType=BIGINT}
+  </select>
 </mapper>

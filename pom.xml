@@ -5,8 +5,9 @@
 	<artifactId>spring_boot2_demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring_boot2_demo</name>
+	<packaging>war</packaging>
 	<description>
-		spirngboot demo contains：mysql、mysql 多数据源、dbcp2 数据库连接池、mybatis(使用xml的写法)、junit4 + mokito 、
+		spirngboot demo contains：mysql、mysql 多数据源、dbcp2 数据库连接池 durid（德鲁伊）、mybatis(使用xml的写法)、junit4 + mokito 、
 		redis、redis lettuce nosql数据库连接池技术、基于redis 的 session 共享方案、基于redis 的cache管理，提升性能（）、
 		thymeleaf 前端模板引擎、WebJars jar形式的js引入依赖、热部署、定时任务 job、
 	</description>
@@ -57,10 +58,11 @@
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 		</dependency>
-		<!--jpa 引入，使用其注解标准 -->
+		<!-- 数据路连接池配置（引入阿里的产品『德鲁伊』） -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>1.1.10</version>
 		</dependency>
 		<!-- MySQL 数据库驱动引入 -->
 		<dependency>
@@ -77,10 +79,10 @@
 	       spring jpa中带有自带的tomcat数据连接池;
 	       在代码中我们也需要用到.
 	     -->
-	    <dependency>
-	       <groupId>org.springframework.boot</groupId>
-	       <artifactId>spring-boot-starter-data-jpa</artifactId>
-	    </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		<!-- redis 引入 -->
 		<!-- springboot 1.5的版本默认采用的连接池技术是jedis。 springboot 2.0以上版本默认连接池是lettuce（莱锤死，高级redis客户端），由于以前多使用jedis的连接池技术，所以这里工程中使用lettuce。 -->
 		<dependency>

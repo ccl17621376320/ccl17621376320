@@ -9,7 +9,7 @@ Spring boot demo
 系统框架 - 
     SPRING-BOOT 2 框架，基于spring5 、jdk 8
     数据库 - MySQL
-    数据连接池 - dbcp2（spring-boot 2 默认支持dbcp2、取消了对dbcp的支持，改变：dbcp2中没有maxActive、maxWait两个变量，转而是maxTotal、maxWaitMillis）
+    数据连接池 - durid（阿里云的数据库连接池）
     ORM框架 - MyBatis（使用xml写法）
     Nosql数据库 - Redis
     NoSql数据库Redis连接池 - lettuce（spring boot 2 之后取消了jedis的数据库连接池，采用了更为高级、使用nio技术实现的letruce）

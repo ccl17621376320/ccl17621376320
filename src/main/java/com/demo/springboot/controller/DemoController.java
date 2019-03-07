@@ -2,6 +2,7 @@ package com.demo.springboot.controller;
 
 import javax.annotation.Resource;
 
+import com.alibaba.druid.stat.DruidStatManagerFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
@@ -9,6 +10,7 @@ import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.demo.springboot.config.SystemParams;
@@ -124,6 +126,10 @@ public class DemoController {
 		return String.valueOf(number);
 	}
 
+	@RequestMapping("/getDemoRe")
+	public DemoRepository getDemoRe(Long id) {
+		return demoService.getDemoRepositoryById(id);
+	}
 
 	@RequestMapping("/getDemo")
 	public Demo getDemo(Long id) {
@@ -147,4 +153,17 @@ public class DemoController {
 		Demo demo = new Demo(id);
 		demoService.removeDemo(demo);
 	}
+
+	/**
+	 * 该请求会默认跳转到 『http://localhost:8080/druid/index.html』，这是阿里官方提供的一个『监控』界面
+	 * @return
+	 */
+	@GetMapping("/druid/stat")
+	public Object druidStat(){
+		// DruidStatManagerFacade#getDataSourceStatDataList
+		//该方法可以获取所有数据源的监控数据，
+		//除此之外 DruidStatManagerFacade 还提供了一些其他方法，你可以按需选择使用。
+		return DruidStatManagerFacade.getInstance().getDataSourceStatDataList();
+	}
+
 }
